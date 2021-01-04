@@ -28,8 +28,8 @@ public class Main {
     private static JPanel panel;
 
     public static void main(String[] args) {
-        frame = new JFrame("BOARDING PASS");
-        frame.setSize(500, 700);
+        frame = new JFrame("BOARDING PASS - CheckIn");
+        frame.setSize(700, 700);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         panel = new JPanel();
@@ -43,10 +43,9 @@ public class Main {
     private static void placeComponents(JPanel panel) {
 
         jList = new JList(model);
-        List <TicketInfo> ticketInfo= (List<List<TicketInfo>>) FileUtility.readFromFile();
-        Object ticektInfo;
-        for(TicketInfo : ticektInfo)
-            model.addElement(ticektInfo);
+        List <TicketInfo> ticketInfo= FileUtility.readFromFile();
+        for(TicketInfo a: ticketInfo)
+            model.addElement(a);
         panel.add(jList);
 
         jList.setCellRenderer(createListRenderer());
@@ -101,20 +100,20 @@ public class Main {
         panel.add(arrivalCityText);
 
         addButton = new JButton("Add");
-        addButton.setBounds(150, 220, 80, 25);
+        addButton.setBounds(220, 220, 80, 25);
         panel.add(addButton);
 
         updateButton = new JButton("Update");
-        updateButton.setBounds(150, 220, 80, 25);
+        updateButton.setBounds(150, 180, 80, 25);
         panel.add(updateButton);
 
 
         modifyButton = new JButton("Modify");
-        modifyButton.setBounds(180, 150, 80, 25);
+        modifyButton.setBounds(120, 200, 80, 25);
         panel.add(modifyButton);
 
         deleteButton = new JButton("Delete");
-        deleteButton.setBounds(180, 150, 80, 25);
+        deleteButton.setBounds(220, 200, 80, 25);
         panel.add(deleteButton);
 //-------------------------------------------------------------------------------------------
 
@@ -172,6 +171,8 @@ public class Main {
                 takeOffCityText.setVisible(true);
                 arrivalCityText.setVisible(true);
                 addButton.setVisible(true);
+                modifyButton.setVisible(false);
+                deleteButton.setVisible(false);
                 jList.setVisible(false);
 
             }
@@ -206,9 +207,6 @@ public class Main {
                 System.exit(0);
             }
         });
-        //---------------------------------------------------------------------------------
-
-
         modifyButton.setVisible(false);
         modifyButton.addActionListener(new ActionListener() {
             @Override
@@ -229,10 +227,12 @@ public class Main {
                 arrivalCityText.setText(ticketInfo.getArrivalCity());
                 updateButton.setVisible(true);
                 deleteButton.setVisible(false);
+                modifyButton.setVisible(false);
                 jList.setVisible(false);
             }
         });
-        deleteButton.setVisible(true);
+
+        deleteButton.setVisible(false);
         deleteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -264,9 +264,3 @@ public class Main {
     }
 
 }
-
-//				TicketInfo ticketInfo = new TicketInfo(71, "Plan C");
-//				FileUtility.writeToFile(ticketInfo);
-//
-//				TicketInfo ticketInfo= FileUtility.readFromFile();
-//				System.out.println(ticketInfo.toString());

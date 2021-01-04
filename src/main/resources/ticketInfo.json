@@ -1,7 +1,6 @@
-{
-  "firstName": "John",
-  "lastName": "Smith",
-  "takeOffCity": "New York",
-  "arrivalCity": "Washington";
-
-}
+[ {
+  "firstName" : "Smith",
+  "lastName" : "John",
+  "takeOffCity" : "Los Angeles",
+  "arrivalCity" : "New York"
+} ]

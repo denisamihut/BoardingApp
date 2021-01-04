@@ -6,13 +6,13 @@ public class TicketInfo {
     private String takeOffCity;
     private String arrivalCity;
 
-    TicketInfo(String firstName, String lastName, String takeOffCity, String arrivalCity) {
+    public TicketInfo(String firstName, String lastName, String takeOffCity, String arrivalCity) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.takeOffCity = takeOffCity;
         this.arrivalCity = arrivalCity;
     }
-
+    public TicketInfo(){}
     public String getFirstName() {
 
         return firstName;
